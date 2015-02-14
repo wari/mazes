@@ -1,5 +1,6 @@
-# Mazes
+# Mazes Chapter 2
 
-Based on the book [Mazes for Programmers: Code Your Own Twisty Little Passages](https://pragprog.com/book/jbmaze/mazes-for-programmers)
+Chapter 2 is all about building a grid class that contains cells.
 
-All code are in the chapter branches
+The following code is just a port of the ruby code in the book
+
