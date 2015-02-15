@@ -87,3 +87,42 @@ func (g *Grid) EachCell() chan *Cell {
 	}()
 	return c
 }
+
+func (g *Grid) String() string {
+	output := "+"
+	for i := 0; i < g.Cols; i++ {
+		output += "---+"
+	}
+	output += "\n"
+
+	for r := range g.EachRow() {
+		top := "|"
+		bottom := "+"
+		for _, c := range r {
+			body := "   "
+			eastBoundary := ""
+			if c.IsLinked(c.East) {
+				eastBoundary = " "
+			} else {
+				eastBoundary = "|"
+			}
+			top += body
+			top += eastBoundary
+
+			southBoundary := ""
+			if c.IsLinked(c.South) {
+				southBoundary = "   "
+			} else {
+				southBoundary = "---"
+			}
+
+			corner := "+"
+			bottom += southBoundary
+			bottom += corner
+		}
+		output += top + "\n"
+		output += bottom + "\n"
+	}
+
+	return output
+}
