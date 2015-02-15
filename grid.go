@@ -1,5 +1,10 @@
 package main
 
+import (
+	"math/rand"
+	"time"
+)
+
 type Grid struct {
 	Rows, Cols int
 	grid       [][]*Cell
@@ -46,4 +51,39 @@ func (g *Grid) getCell(row, col int) *Cell {
 		return nil
 	}
 	return g.grid[row][col]
+}
+
+func (g *Grid) Size() int {
+	return g.Rows * g.Cols
+}
+
+func (g *Grid) RandomCell() *Cell {
+	rand.Seed(time.Now().UnixNano())
+	row := rand.Intn(g.Rows)
+	col := rand.Intn(g.Cols)
+	return g.grid[row][col]
+}
+
+func (g *Grid) EachRow() chan []*Cell {
+	c := make(chan []*Cell)
+	go func() {
+		for _, r := range g.grid {
+			c <- r
+		}
+		close(c)
+	}()
+	return c
+}
+
+func (g *Grid) EachCell() chan *Cell {
+	c := make(chan *Cell)
+	go func() {
+		for r := range g.EachRow() {
+			for _, i := range r {
+				c <- i
+			}
+		}
+		close(c)
+	}()
+	return c
 }

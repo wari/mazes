@@ -15,14 +15,12 @@ func main() {
 	fmt.Println(d)
 	fmt.Println(c.Links())
 	fmt.Println(c.Neighbors())
-	fmt.Println(d.Neighbors())
 	fmt.Println(c.IsLinked(d))
 	c.Unlink(d, true)
 	fmt.Println(c)
 	fmt.Println(d)
 	fmt.Println(c.Links())
 	fmt.Println(c.Neighbors())
-	fmt.Println(d.Neighbors())
 	fmt.Println(c.IsLinked(d))
 
 	g := NewGrid(10, 10)
@@ -33,4 +31,8 @@ func main() {
 	fmt.Println(g.grid[4][5].South)
 	fmt.Println(g.grid[4][5].East)
 	fmt.Println(g.grid[4][5].West)
+
+	for y := range g.EachRow() {
+		fmt.Println(y)
+	}
 }
