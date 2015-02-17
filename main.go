@@ -4,8 +4,14 @@ package main
 import "fmt"
 
 func main() {
-	g := NewGrid(20, 20)
+	fmt.Println("Binary Tree")
+	g := NewGrid(10, 10)
 	b := new(BinaryTree)
 	b.On(g)
+	fmt.Println(g)
+	fmt.Println("Sidewinder")
+	g = NewGrid(10, 10)
+	s := new(Sidewinder)
+	s.On(g)
 	fmt.Println(g)
 }
