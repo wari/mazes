@@ -53,5 +53,7 @@ Sidewinder
 +---+---+---+---+---+---+---+---+---+---+
 ```
 
+![Image output](test.png)
+
 The following code is just a port of the ruby code in the book
 

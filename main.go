@@ -14,4 +14,8 @@ func main() {
 	s := new(Sidewinder)
 	s.On(g)
 	fmt.Println(g)
+	fmt.Println("Showing image")
+	i := NewImage(40)
+	i.Save("test.png", i.DrawGrid(g))
+	Show("test.png")
 }
