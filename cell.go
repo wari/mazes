@@ -25,7 +25,7 @@ func (c *Cell) Link(cell *Cell, bidi bool) *Cell {
 	c.links[cell] = true
 
 	if bidi {
-		c.Link(c, false)
+		cell.Link(c, false)
 	}
 	return c
 }
@@ -33,7 +33,7 @@ func (c *Cell) Link(cell *Cell, bidi bool) *Cell {
 func (c *Cell) Unlink(cell *Cell, bidi bool) *Cell {
 	delete(c.links, cell)
 	if bidi {
-		c.Unlink(c, false)
+		cell.Unlink(c, false)
 	}
 	return c
 }
