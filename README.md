@@ -4,4 +4,5 @@ Based on the book [Mazes for Programmers: Code Your Own Twisty Little Passages](
 
 All code are in the chapter branches
 
-Currently working on [Chapter 2](https://github.com/wari/mazes/tree/ch-2)
+Done - [Chapter 2](https://github.com/wari/mazes/tree/ch-2)
+Currently working on [Chapter 3](https://github.com/wari/mazes/tree/ch-3)
