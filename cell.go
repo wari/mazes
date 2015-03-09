@@ -71,3 +71,22 @@ func (c Cell) Neighbors() []*Cell {
 	}
 	return list
 }
+
+func (c *Cell) Distances() *Distances {
+	d := NewDistances(c)
+	frontier := []*Cell{c}
+	for len(frontier) != 0 { // frontier.any?
+		newFrontier := make([]*Cell, 0)
+		for _, cell := range frontier {
+			for _, link := range cell.Links() {
+				if link == c || d.Distance(link) > 0 {
+					continue
+				}
+				d.SetDistance(link, d.Distance(cell)+1)
+				newFrontier = append(newFrontier, link)
+			}
+		}
+		frontier = newFrontier
+	}
+	return d
+}

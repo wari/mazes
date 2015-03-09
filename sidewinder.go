@@ -18,7 +18,7 @@ func (r cells) sample() *Cell {
 	}
 }
 
-func (s *Sidewinder) On(g *Grid) *Grid {
+func (s *Sidewinder) On(g Grider) Grider {
 	rand.Seed(time.Now().UnixNano())
 	for r := range g.EachRow() {
 		run := make(cells, 0)

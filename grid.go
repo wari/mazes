@@ -35,15 +35,15 @@ func (g *Grid) prepareGrid() {
 func (g *Grid) configureCells() {
 	for r := range g.grid {
 		for c := range g.grid[r] {
-			g.grid[r][c].North = g.getCell(r-1, c)
-			g.grid[r][c].South = g.getCell(r+1, c)
-			g.grid[r][c].West = g.getCell(r, c-1)
-			g.grid[r][c].East = g.getCell(r, c+1)
+			g.grid[r][c].North = g.GetCell(r-1, c)
+			g.grid[r][c].South = g.GetCell(r+1, c)
+			g.grid[r][c].West = g.GetCell(r, c-1)
+			g.grid[r][c].East = g.GetCell(r, c+1)
 		}
 	}
 }
 
-func (g *Grid) getCell(row, col int) *Cell {
+func (g *Grid) GetCell(row, col int) *Cell {
 	if row < 0 || row >= g.Rows {
 		return nil
 	}
@@ -88,6 +88,10 @@ func (g *Grid) EachCell() chan *Cell {
 	return c
 }
 
+func (g *Grid) ContentsOf(cell *Cell) string {
+	return " "
+}
+
 func (g *Grid) String() string {
 	output := "+"
 	for i := 0; i < g.Cols; i++ {
@@ -99,7 +103,7 @@ func (g *Grid) String() string {
 		top := "|"
 		bottom := "+"
 		for _, c := range r {
-			body := "   "
+			body := " " + g.ContentsOf(c) + " "
 			eastBoundary := ""
 			if c.IsLinked(c.East) {
 				eastBoundary = " "

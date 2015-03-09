@@ -8,6 +8,7 @@ type Distances struct {
 func NewDistances(root *Cell) *Distances {
 	d := new(Distances)
 	d.root = root
+	d.cells = make(map[*Cell]int)
 	d.cells[root] = 0
 	return d
 }

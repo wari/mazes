@@ -7,7 +7,7 @@ import (
 
 type BinaryTree struct{}
 
-func (b *BinaryTree) On(g *Grid) {
+func (b *BinaryTree) On(g Grider) {
 	rand.Seed(time.Now().UnixNano())
 	for c := range g.EachCell() {
 		neighbors := make([]*Cell, 0)
